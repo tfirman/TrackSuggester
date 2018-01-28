@@ -3,16 +3,16 @@ function findBestResult (answers) {
   var firstAnswers = 0;
   var secondAnswers = 0;
   var thirdAnswers = 0;
+  var result = [];
   for (var i=0; i<5; i++){
     if (answers[i][0]==="a") {firstAnswers++};
     if (answers[i][0]==="b") {secondAnswers++};
     if (answers[i][0]==="c") {thirdAnswers++};
   };
-  if(firstAnswers >2) {var result = ["result1"]}
-  else if (secondAnswers >2) {var result = ["result2"]}
-  else if (thirdAnswers >2) {var result = ["result3"]}
+  if(firstAnswers >2) {result = ["result1"]}
+  else if (secondAnswers >2) {result = ["result2"]}
+  else if (thirdAnswers >2) {result = ["result3"]}
   else {
-    var result = [];
     if(firstAnswers === 2) {result.push("result1")};
     if(secondAnswers === 2) {result.push("result2")};
     if(thirdAnswers === 2) {result.push("result3")};
@@ -31,12 +31,12 @@ $(document).ready(function() {
     answers.push ($("input:radio[name=qfour]:checked").val());
     answers.push ($("input:radio[name=qfive]:checked").val());
     var result = findBestResult(answers);
-    $(".results").show();
     for (var j=1; j<=3; j++) {
       $("#result"+parseInt(j)).hide();
     };
     for (var i=0; i<=result.length; i++) {
       $("#"+result[i]).show();
     };
+    $(".results").fadeIn();
   });
 });
